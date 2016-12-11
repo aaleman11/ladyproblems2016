@@ -122,9 +122,34 @@ var handlers = {
         //this.emit(':tell',speechOutput);
         this.emit(':tellWithCard', speechOutput, randomJob.name, cardOutput);
     },
-    // 'CareerInfoIntent':function(intent){
-    //     this.emit(:tell, intent.);
-    // }
+    'SoftwareEngineer': function() {
+	var jobArr = this.t('JOBS');
+        var randomJob = jobArr[0];
+
+	// Create speech output
+        var speechOutput = this.t("GET_RANDOM_MESSAGE") + randomJob.name+ "\n "+randomJob.description
+            +"\n"+ randomJob.percentage +"percent of the industry is composed of women. A notable female " 
+                +randomJob.name+ " is "
+                +randomJob.notable +". \n"
+                +randomJob.noteDescript;
+        var cardOutput =  randomJob.description+ " only " + randomJob.percent + "% are female.";
+        //this.emit(':tell',speechOutput);
+        this.emit(':tellWithCard', speechOutput, randomJob.name, cardOutput);
+    },
+    'Politician': function() {
+	var jobArr = this.t('JOBS');
+        var randomJob = jobArr[1];
+
+	// Create speech output
+        var speechOutput = this.t("GET_RANDOM_MESSAGE") + randomJob.name+ "\n "+randomJob.description
+            +"\n"+ randomJob.percentage +"percent of the industry is composed of women. A notable female " 
+                +randomJob.name+ " is "
+                +randomJob.notable +". \n"
+                +randomJob.noteDescript;
+        var cardOutput =  randomJob.description+ " only " + randomJob.percent + "% are female.";
+        //this.emit(':tell',speechOutput);
+        this.emit(':tellWithCard', speechOutput, randomJob.name, cardOutput);
+    },
     'AMAZON.HelpIntent': function () {
         var speechOutput = this.t("HELP_MESSAGE");
         var reprompt = this.t("HELP_MESSAGE");
