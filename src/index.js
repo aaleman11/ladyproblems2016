@@ -127,7 +127,7 @@ var handlers = {
         var randomJob = jobArr[0];
 
 	// Create speech output
-        var speechOutput = this.t("GET_RANDOM_MESSAGE") + randomJob.name+ "\n "+randomJob.description
+        var speechOutput = randomJob.name+ "\n "+randomJob.description
             +"\n"+ randomJob.percentage +"percent of the industry is composed of women. A notable female " 
                 +randomJob.name+ " is "
                 +randomJob.notable +". \n"
@@ -141,7 +141,7 @@ var handlers = {
         var randomJob = jobArr[1];
 
 	// Create speech output
-        var speechOutput = this.t("GET_RANDOM_MESSAGE") + randomJob.name+ "\n "+randomJob.description
+        var speechOutput = randomJob.name+ "\n "+randomJob.description
             +"\n"+ randomJob.percentage +"percent of the industry is composed of women. A notable female " 
                 +randomJob.name+ " is "
                 +randomJob.notable +". \n"
