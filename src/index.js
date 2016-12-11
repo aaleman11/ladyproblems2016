@@ -18,6 +18,7 @@ var languageStrings = {
             {
                "name":"politican",
                "description":"Politicians are key leaders and decision makers at every level of government. Becoming a politician in the United States allows a person to have a direct effect on many facets of life throughout our cities, states, and country.",
+               "percent":"23",
                "jobLink":"http://www.politicalsciencecareer.com/politician.html",
                "notable":"Elizabeth Warren",
                "noteDescript":"She is a Professor from Harvard Law School who easily won the Senate seat of Massachusetts in 2012",
@@ -113,14 +114,17 @@ var handlers = {
 
        // Create speech output
         var speechOutput = this.t("GET_RANDOM_MESSAGE") + randomJob.name+ "\n "+randomJob.description
-                +"\n"+ randomJob.percent +"percent of the industry is composed of women. A notable female " 
+                +"\n"+ randomJob.percentage +"percent of the industry is composed of women. A notable female " 
                             +randomJob.name+ " is "
                             +randomJob.notable +". \n"
                             +randomJob.noteDescript;
-        var cardOutput =  randomJob.description+ " only " + randomJob.percent+ "% are female.";
+        var cardOutput =  randomJob.description+ " only " + randomJob.percent + "% are female.";
         //this.emit(':tell',speechOutput);
         this.emit(':tellWithCard', speechOutput, randomJob.name, cardOutput);
     },
+    // 'CareerInfoIntent':function(intent){
+    //     this.emit(:tell, intent.);
+    // }
     'AMAZON.HelpIntent': function () {
         var speechOutput = this.t("HELP_MESSAGE");
         var reprompt = this.t("HELP_MESSAGE");
