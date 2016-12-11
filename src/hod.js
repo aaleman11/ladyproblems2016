@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+var http = require("http").Server(app);
 var bodyParser = require("body-parser");
 
 var havenOnDemand = require("havenondemand");
@@ -13,6 +14,17 @@ app.use(express.static(__dirname + "/public") );
 var callback = function(err, resp, body) {
     console.log(body);
 };
-var data = {"text": "I hate cats!"};
 
-client.post("analyzesentiment", data, false, callback);
+//var txt = req.body["Body"];
+var data1 = {"text": "I hate cats!"};
+
+var data2 = {"text":data1, entity_type:["places_eng", "people_eng", "companies_eng", "organizations"]};
+
+client.post("analyzesentiment", data1, false, callback);
+
+client.get("analyzesentiment", data2, false, function(err, resp, body) {
+    if(!err) {
+	console.log(resp.body);
+    }
+    
+});
