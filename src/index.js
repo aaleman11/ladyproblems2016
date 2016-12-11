@@ -1,5 +1,6 @@
 'use strict';
 var Alexa = require('alexa-sdk');
+
 var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 
 var languageStrings = {
@@ -88,6 +89,8 @@ var languageStrings = {
    }
 };
 
+console.log(recipes);
+
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
     alexa.APP_ID = APP_ID;
@@ -122,9 +125,50 @@ var handlers = {
         //this.emit(':tell',speechOutput);
         this.emit(':tellWithCard', speechOutput, randomJob.name, cardOutput);
     },
-    // 'CareerInfoIntent':function(intent){
-    //     this.emit(:tell, intent.);
-    // }
+    'CareerInfoIntent':function(intent, session, response){
+	var recipes = this.t("JOBS");
+	var recipe = "";
+	var itemSlot = intent.slots.Item,
+            itemName;
+        if (itemSlot && itemSlot.value) {
+            itemName = itemSlot.value.toLowerCase();
+        }
+
+	for (var i = 0; i < recipes.length; i++) {
+	    if (recipes[i] == itemName) {
+		recipe = recipes[i];
+	    }
+	}
+
+        var cardTitle = "Career Information for " + itemName,
+            recipe,
+            speechOutput,
+            repromptOutput;
+        if (recipe) {
+            speechOutput = {
+                speech: recipe,
+                type: Alexa.speechOutputType.PLAIN_TEXT
+            };
+            response.tellWithCard(speechOutput, cardTitle, recipe);
+        } else {
+            var speech;
+            if (itemName) {
+                speech = "I'm sorry, I currently do not know the recipe for " + itemName + ". What else can I help with?";
+            } else {
+                speech = "I'm sorry, I currently do not know that job. What else can I help with?";
+            }
+            speechOutput = {
+                speech: speech,
+                type: Alexa.speechOutputType.PLAIN_TEXT
+            };
+            repromptOutput = {
+                speech: "What else can I help with?",
+                type: Alexa.speechOutputType.PLAIN_TEXT
+            };
+            response.ask(speechOutput, repromptOutput);
+        }
+	this.emit(':tell', intent);
+    },
     'AMAZON.HelpIntent': function () {
         var speechOutput = this.t("HELP_MESSAGE");
         var reprompt = this.t("HELP_MESSAGE");
