@@ -1,0 +1,19 @@
+RandomIntent name a random job
+RandomIntent name a job
+RandomIntent what jobs are out there
+RandomIntent what can I be
+RandomIntent random job
+RandomIntent what can I be when I grow up
+RandomIntent name a career
+RandomIntent name a random career
+RandomIntent random career
+CareerInfoIntent what does a {Career} do
+CareerInfoIntent what is a {Career}
+CareerInfoIntent what does it take to be a {Career}
+CareerInfoIntent what's a {Career}
+CareerInfoIntent I want to be a {Career}
+CareerInfoIntent what does an {Career}
+CareerInfoIntent what is an {Career}
+CareerInfoIntent what's an {Career}
+CareerInfoIntent what does it take to be an {Career}
+CareerInfoIntent I want to be an {Career}

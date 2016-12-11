@@ -1,0 +1,26 @@
+
+{
+  "intents": [
+    {
+      "intent": "RandomIntent"
+    },
+    {
+     "intent": "CareerInfoIntent",
+      "slots": [
+        	{
+         	 "name": "Career",
+          	 "type": "LIST_OF_CAREERS"
+        	}
+     	]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
